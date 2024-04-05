@@ -1,0 +1,375 @@
+
+{
+  "wallets": [
+    {
+      "id": "1",
+      "accounts": [
+        {
+          "id": "11",
+          "currencyType": "USD",
+          "transactions": [1]
+        },
+        {
+          "id": "12",
+          "currencyType": "EUR",
+          "transactions": [2]
+        },
+        {
+          "id": "13",
+          "currencyType": "BGN",
+          "transactions": [3]
+        }
+      ],
+      "holder": {
+        "name": "John Smith"
+      }
+    },
+    {
+      "id": "2",
+      "accounts": [
+        {
+          "id": "21",
+          "currencyType": "USD",
+          "transactions": [4800, -2400, -278, -500, 1000, -14.9]
+        },
+        {
+          "id": "22",
+          "currencyType": "EUR",
+          "transactions": [5000, -1200, -178, 500, -200, -15.3]
+        },
+        {
+          "id": "23",
+          "currencyType": "BGN",
+          "transactions": [15000, -12, -578, 1500, -111.6]
+        }
+      ],
+      "holder": {
+        "name": "Alice Johnson"
+      }
+    },
+    {
+      "id": "3",
+      "accounts": [
+        {
+          "id": "31",
+          "currencyType": "USD",
+          "transactions": [
+            750.87,
+            -117.24,
+            28.59,
+            574.67,
+            -864.83,
+            312.51
+          ]
+        },
+        {
+          "id": "32",
+          "currencyType": "BGN",
+          "transactions": [
+            162.34,
+            663.45,
+            68.84,
+            357.96,
+            -96.7,
+            170.89,
+            805.93,
+            -914.32,
+            -143.95
+          ]
+        },
+        {
+          "id": "33",
+          "currencyType": "JPY",
+          "transactions": [
+            -983.8,
+            691.93,
+            892.62,
+            711.7,
+            -131.25,
+            196.93,
+            353.65
+          ]
+        }
+      ],
+      "holder": {
+        "name": "Patricia Miller"
+      }
+    },
+    {
+      "id": "4",
+      "accounts": [
+        {
+          "id": "41",
+          "currencyType": "JPY",
+          "transactions": [
+            -711.16,
+            422.7,
+            97.05,
+            -950.44,
+            -189.9
+          ]
+        }
+      ],
+      "holder": {
+        "name": "Jane Doe"
+      }
+    },
+    {
+      "id": "5",
+      "accounts": [
+        {
+          "id": "51",
+          "currencyType": "JPY",
+          "transactions": [
+            -489.29,
+            -432.92,
+            126.06,
+            418.67,
+            193.67,
+            406.12,
+            -573.42
+          ]
+        },
+        {
+          "id": "52",
+          "currencyType": "USD",
+          "transactions": [
+            72.7,
+            76.15,
+            -878.57,
+            -691.08,
+            -763.66,
+            125.16
+          ]
+        },
+        {
+          "id": "53",
+          "currencyType": "JPY",
+          "transactions": [
+            234.36,
+            -356.39,
+            -639.7,
+            586.8,
+            656.85,
+            -338.58,
+            199.23,
+            74.37
+          ]
+        }
+      ],
+      "holder": {
+        "name": "Sarah Smith"
+      }
+    },
+    {
+      "id": "6",
+      "accounts": [
+        {
+          "id": "e70a1f26-ae63-423e-9fe0-3b8c763dd509",
+          "currencyType": "BGN",
+          "transactions": [
+            -690.0,
+            135.76,
+            -755.85,
+            -586.62,
+            545.7,
+            295.85,
+            -173.15,
+            620.8,
+            -646.65
+          ]
+        }
+      ],
+      "holder": {
+        "name": "Emma Jones"
+      }
+    },
+    {
+      "id": "7",
+      "accounts": [
+        {
+          "id": "d31ededb-739b-4659-9349-9daad32bfba4",
+          "currencyType": "BGN",
+          "transactions": [
+            -195.09,
+            -76.88,
+            -610.12,
+            -831.67,
+            -161.2,
+            422.19,
+            405.29
+          ]
+        }
+      ],
+      "holder": {
+        "name": "Jane Doe"
+      }
+    },
+    {
+      "id": "8",
+      "accounts": [
+        {
+          "id": "a64e9235-f0ca-46bd-9245-c7c1d8360ac6",
+          "currencyType": "BGN",
+          "transactions": [
+            -17.62,
+            -792.2,
+            -272.4,
+            157.62,
+            -125.07,
+            195.73
+          ]
+        }
+      ],
+      "holder": {
+        "name": "David Wilson"
+      }
+    },
+    {
+      "id": "9",
+      "accounts": [
+        {
+          "id": "70a86b45-2152-49ef-b3ed-8dba890d5757",
+          "currencyType": "GBP",
+          "transactions": [
+            716.77,
+            -919.46,
+            695.25,
+            -591.68,
+            171.7,
+            -257.23,
+            -152.9,
+            20.21,
+            -528.32
+          ]
+        }
+      ],
+      "holder": {
+        "name": "Chris White"
+      }
+    },
+    {
+      "id": "10",
+      "accounts": [
+        {
+          "id": "02091788-135b-4100-ac34-72a3c4944c2a",
+          "currencyType": "EUR",
+          "transactions": [
+            -93.57,
+            -909.18,
+            761.57,
+            802.96,
+            265.91,
+            155.22
+          ]
+        }
+      ],
+      "holder": {
+        "name": "Chris White"
+      }
+    },
+    {
+      "id": "11",
+      "accounts": [
+        {
+          "id": "6ab62041-bfdf-4699-8f57-38f2db1be812",
+          "currencyType": "BGN",
+          "transactions": [
+            -370.98,
+            256.69,
+            185.04,
+            -227.93,
+            893.2,
+            581.15,
+            -998.86,
+            342.68,
+            291.13
+          ]
+        },
+        {
+          "id": "c23d5f0b-d936-4d56-a8f8-be1aca52426d",
+          "currencyType": "GBP",
+          "transactions": [
+            -330.0,
+            -595.35,
+            -969.55,
+            -180.47,
+            631.64,
+            386.92,
+            357.01,
+            -722.2,
+            -742.82,
+            -875.44
+          ]
+        },
+        {
+          "id": "39f77770-8237-44a8-8fdc-a62db45f18ee",
+          "currencyType": "USD",
+          "transactions": [
+            868.14,
+            -100.84,
+            403.48,
+            -305.37,
+            -590.4,
+            841.49,
+            -853.29,
+            76.74
+          ]
+        }
+      ],
+      "holder": {
+        "name": "David Wilson"
+      }
+    },
+    {
+      "id": "12",
+      "accounts": [
+        {
+          "id": "4ab68698-9b9f-45ed-b37e-23dcc8ddc0302a",
+          "currencyType": "EUR",
+          "transactions": [
+            -561.71,
+            -808.69,
+            508.97,
+            661.21,
+            -500.45,
+            39.03,
+            610.33,
+            543.44
+          ]
+        },
+        {
+          "id": "ff64a563-1e14-4cb6-a4ae-f2176117a537c5",
+          "currencyType": "JPY",
+          "transactions": [
+            762.35,
+            140.52,
+            -178.06,
+            342.93,
+            529.3,
+            -228.7,
+            933.17,
+            -821.18,
+            761.87,
+            -237.45
+          ]
+        },
+        {
+          "id": "57730e80-f79d-4355-9273-42ae5dc90312ea5",
+          "currencyType": "USD",
+          "transactions": [
+            -618.14,
+            -967.86,
+            566.75,
+            -99.51,
+            11397.6,
+            -444.14
+          ]
+        }
+      ],
+      "holder": {
+        "name": "Jane Doe"
+      }
+    }
+  ]
+}

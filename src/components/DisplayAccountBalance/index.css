@@ -1,0 +1,13 @@
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  height: 100vh; /* Full viewport height */
+  padding-top: 20px; /* Adjust top spacing */
+}
+
+.content {
+  text-align: center; /* Center the text inside the content */
+}
+
