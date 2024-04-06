@@ -15,5 +15,23 @@ type Account = {
 };
 
 type AccountMutationProps = {
-  accountId: string; // Assuming accountId is a string
+  walletId: string; // Assuming accountId is a string
+}
+
+type AddTransactionParams = {
+  queryClient: QueryClient;
+  walletId: string;
+  selectedAccountId: string;
+  newAmount: number;
+}
+
+type UpdateAccountParams = {
+  accounts: Account[];
+  accountId: string;
+  newTransaction: number;
+}
+
+type UseAccountFormProps = {
+  walletId: string;
+  selectedAccountId: string | undefined;
 }

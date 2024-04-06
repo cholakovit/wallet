@@ -15,8 +15,8 @@ const DisplayAccountBalance = () => {
     <div className='container'>
       <div className='content'>
         <h2>Balance for account:</h2>
-        <p>Account ID: {accountId}</p>
-        <p>Balance: {accountBalance}</p>
+        {accountId && <p>Account ID: <br />{accountId}</p>}
+        {accountBalance && <p>Balance: <br />{accountBalance}</p>}
       </div>
     </div>
   )

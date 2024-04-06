@@ -1,4 +1,3 @@
-
 {
   "wallets": [
     {
@@ -7,17 +6,46 @@
         {
           "id": "11",
           "currencyType": "USD",
-          "transactions": [1]
+          "transactions": [
+            1,
+            2,
+            20,
+            30,
+            30,
+            20,
+            100,
+            200,
+            10,
+            50,
+            20,
+            5,
+            50,
+            44,
+            44,
+            44
+          ]
         },
         {
           "id": "12",
           "currencyType": "EUR",
-          "transactions": [2]
+          "transactions": [
+            2,
+            50,
+            100,
+            5
+          ]
         },
         {
           "id": "13",
           "currencyType": "BGN",
-          "transactions": [3]
+          "transactions": [
+            3,
+            100,
+            50,
+            50,
+            50,
+            50
+          ]
         }
       ],
       "holder": {
@@ -30,17 +58,37 @@
         {
           "id": "21",
           "currencyType": "USD",
-          "transactions": [4800, -2400, -278, -500, 1000, -14.9]
+          "transactions": [
+            4800,
+            -2400,
+            -278,
+            -500,
+            1000,
+            -14.9
+          ]
         },
         {
           "id": "22",
           "currencyType": "EUR",
-          "transactions": [5000, -1200, -178, 500, -200, -15.3]
+          "transactions": [
+            5000,
+            -1200,
+            -178,
+            500,
+            -200,
+            -15.3
+          ]
         },
         {
           "id": "23",
           "currencyType": "BGN",
-          "transactions": [15000, -12, -578, 1500, -111.6]
+          "transactions": [
+            15000,
+            -12,
+            -578,
+            1500,
+            -111.6
+          ]
         }
       ],
       "holder": {
@@ -168,7 +216,7 @@
           "id": "e70a1f26-ae63-423e-9fe0-3b8c763dd509",
           "currencyType": "BGN",
           "transactions": [
-            -690.0,
+            -690,
             135.76,
             -755.85,
             -586.62,
@@ -290,7 +338,7 @@
           "id": "c23d5f0b-d936-4d56-a8f8-be1aca52426d",
           "currencyType": "GBP",
           "transactions": [
-            -330.0,
+            -330,
             -595.35,
             -969.55,
             -180.47,

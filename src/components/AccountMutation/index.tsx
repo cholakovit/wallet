@@ -1,11 +1,13 @@
-import { useAccountMutation, useGetWalletById, useHandleCurrencyChange } from '../../hooks/walletHooks';
+import { useAccountForm, useAccountMutation, useGetWalletById, useHandleCurrencyChange } from '../../hooks/walletHooks';
 import './index.css';
 import { Link } from 'react-router-dom';
 
-const AccountMutation: React.FC<AccountMutationProps> = ({ accountId }) => {
-  const { data: wallet, error, isLoading } = useGetWalletById(accountId);
-  const mutation = useAccountMutation(accountId);
-  const { selectedCurrency, handleCurrencyChange } = useHandleCurrencyChange(wallet, mutation);
+const AccountMutation: React.FC<AccountMutationProps> = ({ walletId }) => {
+  const { data: wallet, error, isLoading } = useGetWalletById(walletId);
+  const mutation = useAccountMutation(walletId);
+  const { selectedCurrency, selectedAccountId, handleCurrencyChange, missingCurrency } = useHandleCurrencyChange(wallet, mutation);
+
+  const { amountRef, handleSubmit, message } = useAccountForm({ walletId, selectedAccountId: selectedAccountId });
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error occurred: {error.message}</div>;
@@ -13,7 +15,8 @@ const AccountMutation: React.FC<AccountMutationProps> = ({ accountId }) => {
   return (
     <div className="form-container">
       <div>Account: {wallet.holder.name}</div><br />
-      <form>
+      <form onSubmit={handleSubmit}>
+        
         <label htmlFor="currency-select">Currency:</label>
         <select id="currency-select" value={selectedCurrency} onChange={handleCurrencyChange}>
           <option value=''>Choose a currency:</option>
@@ -23,14 +26,15 @@ const AccountMutation: React.FC<AccountMutationProps> = ({ accountId }) => {
         </select>
         <div></div>
         <br />
-        {/* <label>Amount:</label>
-        <input type="text" /> */}
+        <label>Add Amount:</label>
+        <input type="number" ref={amountRef} disabled={!selectedCurrency} />
         <br />
         <button type="submit">Send</button>&nbsp;&nbsp;
         <Link to={`/`}>Back</Link>
+        {missingCurrency && <div className='msg'>{missingCurrency}</div>}
+        {message && <div className='msg'>{message}</div>}
       </form>
     </div>
-
   )
 }
 

@@ -10,7 +10,7 @@ const AccountMut: FC = () => {
 
   return (
     <div>
-      <AccountMutation accountId={params.id} />
+      <AccountMutation walletId={params.id} />
       <DisplayAccountBalance />
     </div>
   )
