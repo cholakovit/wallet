@@ -132,18 +132,68 @@ export const useHandleCurrencyChange = (wallet: Wallet, mutation: UseMutationRes
   return { selectedCurrency, selectedAccountId, handleCurrencyChange, missingCurrency };
 };
 
+/* useAddTransactionToAccount with OPTIMISTI UPDATE */
+
 export const useAddTransactionToAccount = () => {
   const queryClient = useQueryClient();
-  
+
   return useMutation({
     mutationKey: ['wallet'],
     mutationFn: addTransactionToAccount,
+    onMutate: async ({ walletId, selectedAccountId, newAmount }) => {
+      // Cancel any outgoing refetches to avoid overwriting the optimistic update
+      await queryClient.cancelQueries({ queryKey: ['wallet'] });
+
+      // Snapshot the previous value
+      const previousWallet = queryClient.getQueryData<Wallet[]>(['wallet']);
+
+      // Optimistically update to the new value
+      if (previousWallet) {
+        const updatedWallets = previousWallet.map(wallet => {
+          if (wallet.id === walletId) {
+            // Find the account and update its transactions
+            const updatedAccounts = wallet.accounts.map(account => {
+              if (account.id === selectedAccountId) {
+                return { ...account, transactions: [...account.transactions, newAmount] };
+              }
+              return account;
+            });
+
+            return { ...wallet, accounts: updatedAccounts };
+          }
+          return wallet;
+        });
+        queryClient.setQueryData(['wallet'], updatedWallets);
+      }
+      return { previousWallet };
+    },
+    onError: (err, variables, context) => {
+      // If the mutation fails, use the context returned from onMutate to roll back
+      if (context?.previousWallet) {
+        queryClient.setQueryData(['wallet'], context.previousWallet);
+      }
+    },
     onSettled: () => {
       // Invalidate and refetch wallets data to ensure the UI is up-to-date
-      queryClient.invalidateQueries({ queryKey: ['wallet'] });
+      //queryClient.invalidateQueries({ queryKey: ['wallet'] });
     },
   });
 };
+
+/* useAddTransactionToAccount with no  OPTIMISTI UPDATE */
+
+// export const useAddTransactionToAccount = () => {
+//   const queryClient = useQueryClient();
+  
+//   return useMutation({
+//     mutationKey: ['wallet'],
+//     mutationFn: addTransactionToAccount,
+//     onSettled: () => {
+//       // Invalidate and refetch wallets data to ensure the UI is up-to-date
+//       queryClient.invalidateQueries({ queryKey: ['wallet'] });
+//     },
+//   });
+// };
 
 
 // Function to update a specific account's transactions within a list of accounts

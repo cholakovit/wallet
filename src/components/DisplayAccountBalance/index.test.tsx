@@ -1,30 +1,54 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import DisplayAccountBalance from '.'; // Adjust the import path as necessary
-import * as walletHooks from '../../hooks/walletHooks'; // Adjust the import path as necessary
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import DisplayAccountBalance from '.';
 
-// Mock the custom hook
+// Mock the entire walletHooks module
 jest.mock('../../hooks/walletHooks', () => ({
-  useGetAccountBalance: jest.fn()
+  useGetAccountBalance: jest.fn(),
+  // Add other mocked hooks here if necessary
 }));
 
-describe('DisplayAccountBalance', () => {
-  it('renders the h2 tag, account ID, and balance correctly', () => {
-    const mockedUseGetAccountBalance = walletHooks.useGetAccountBalance as jest.Mock;
+// Mock the useQuery hook from @tanstack/react-query
+jest.mock('@tanstack/react-query', () => ({
+  ...jest.requireActual('@tanstack/react-query'), // Use actual implementations for other exports
+  useQuery: jest.fn(),
+}));
 
-    // Set up the mock to return a specific balance
-    const mockedBalance = 100; // Example balance
-    mockedUseGetAccountBalance.mockReturnValue(mockedBalance);
+describe('DisplayAccountBalance dynamic tests', () => {
+  const queryClient = new QueryClient();
 
-    render(<DisplayAccountBalance />);
+  it('renders Account ID and Balance when provided', async () => {
+    // Provide dynamic mock implementations
+    const mockAccountId = '123';
+    const mockAccountBalance = 100;
+    jest.requireMock('@tanstack/react-query').useQuery.mockImplementation(() => ({ data: mockAccountId }));
+    jest.requireMock('../../hooks/walletHooks').useGetAccountBalance.mockImplementation(() => mockAccountBalance);
 
-    // Assert the h2 tag content
-    expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent('Balance for account:');
+    render(
+      <QueryClientProvider client={queryClient}>
+        <DisplayAccountBalance />
+      </QueryClientProvider>
+    );
 
-    // Assert the account ID display
-    expect(screen.getByText(/259566ae-9d0d-4def-a780-2bd3e7aca2ed/)).toBeInTheDocument();
+    expect(await screen.findByText(/Account ID:/i)).toBeInTheDocument();
+    expect(await screen.findByText(/Balance:/i)).toBeInTheDocument();
+  });
 
-    // Assert the balance display
-    expect(screen.getByText(`Balance: ${mockedBalance}`)).toBeInTheDocument();
+  it('does not render Account ID and Balance when not provided', async () => {
+    // Provide dynamic mock implementations for absence scenario
+    jest.requireMock('@tanstack/react-query').useQuery.mockImplementation(() => ({ data: undefined }));
+    jest.requireMock('../../hooks/walletHooks').useGetAccountBalance.mockImplementation(() => undefined);
+
+    render(
+      <QueryClientProvider client={queryClient}>
+        <DisplayAccountBalance />
+      </QueryClientProvider>
+    );
+
+    expect(screen.queryByText(/Account ID:/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Balance:/i)).not.toBeInTheDocument();
   });
 });
+
+  

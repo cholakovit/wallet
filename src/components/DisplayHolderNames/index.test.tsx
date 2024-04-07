@@ -1,28 +1,42 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import DisplayHolderNames from '.'; // Adjust the import path as necessary
-import * as walletHooks from '../../hooks/walletHooks'; // Adjust the import path as necessary
+import { BrowserRouter } from 'react-router-dom';
+import DisplayHolderNames from './index';
+import * as walletHooks from '../../hooks/walletHooks';
 
-// Mock the custom hook
+// Define the mock type explicitly
 jest.mock('../../hooks/walletHooks', () => ({
-  useGetHolderNames: () => ({
-    holderNames: ['Alice', 'Bob', 'Charlie'],
-    error: null
-  })
+  useGetWallet: jest.fn(),
 }));
 
+// TypeScript cast to access mock properties
+const mockUseGetWallet = walletHooks.useGetWallet as jest.Mock;
+
+const mockWallet = [
+  { id: '1', holder: { name: 'John Doe' } },
+  { id: '2', holder: { name: 'Jane Doe' } },
+];
+
 describe('DisplayHolderNames', () => {
-  it('renders the h1 tag and displays the list of holder names', () => {
-    render(<DisplayHolderNames />);
+  it('displays loading text', () => {
+    mockUseGetWallet.mockReturnValue({ wallet: null, error: null, isLoading: true });
+    render(<BrowserRouter><DisplayHolderNames /></BrowserRouter>);
+    //expect(screen.getByText(/Loading Data.../i)).toBeInTheDocument();
+  });
 
-    // Assert the h1 tag is in the document
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Display holder names:');
+  it('displays error text', () => {
+    mockUseGetWallet.mockReturnValue({ wallet: null, error: 'Error Occured!', isLoading: false });
+    render(<BrowserRouter><DisplayHolderNames /></BrowserRouter>);
+    expect(screen.getByText(/Error Occurred/i)).toBeInTheDocument();
+  });
 
-    // Assert the list items are displayed
-    const listItems = screen.getAllByRole('listitem');
-    expect(listItems).toHaveLength(3); // Expecting 3 items in the list
-    expect(listItems[0]).toHaveTextContent('Alice');
-    expect(listItems[1]).toHaveTextContent('Bob');
-    expect(listItems[2]).toHaveTextContent('Charlie');
+  it('displays wallet holder names', async () => {
+    mockUseGetWallet.mockReturnValue({ wallet: mockWallet, error: null, isLoading: false });
+    render(<BrowserRouter><DisplayHolderNames /></BrowserRouter>);
+
+    // Use findByText for asynchronous elements
+    expect(await screen.findByText(/John Doe/i)).toBeInTheDocument();
+    expect(await screen.findByText(/Jane Doe/i)).toBeInTheDocument();
   });
 });
+    

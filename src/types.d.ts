@@ -23,6 +23,8 @@ type AddTransactionParams = {
   walletId: string;
   selectedAccountId: string;
   newAmount: number;
+  accountId?: string;
+  amount?: number;
 }
 
 type UpdateAccountParams = {
