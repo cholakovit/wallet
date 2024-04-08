@@ -270,7 +270,7 @@ export const useAccountForm = ({ walletId, selectedAccountId }: UseAccountFormPr
         }
         setMessage("Transaction successfully added.");
       },
-      onError: (error: any) => {
+      onError: (error: Error) => {
         setMessage(`Transaction failed: ${error.message || 'Unknown error'}`);
       }
     });

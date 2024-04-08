@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import './index.css';
 
-export const AccountLink = ({ account }: { account: any }) => {
+export const AccountLink = ({ account }: { account: Wallet }) => {
   if (account.holder.name === "Emma Jones") {
     return <div className="error">Error: This account cannot be displayed.</div>;
   }
