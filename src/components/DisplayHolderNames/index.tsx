@@ -1,11 +1,14 @@
-import { Link } from 'react-router-dom'
 import { useGetWallet } from '../../hooks/walletHooks'
-import './index.css';
 import ErrorBoundary from '../../helper/ErrorBoundary';
 import Skeleton from '../Skeleton';
+import { AccountLink } from '../AccountLink';
+
+import './index.css';
 
 const DisplayHolderNames = () => {
   const { wallet, error, isLoading } = useGetWallet();
+
+
 
   return (
     <div className='holderNames'>
@@ -13,11 +16,12 @@ const DisplayHolderNames = () => {
       {isLoading && <Skeleton count={10} />}
       {error && <div>Error Occurred: {error.message}</div>}
       <ul>
-        {wallet && wallet.map((account: Wallet, index: number) => (
+      {wallet && wallet.map((account: Wallet, index: number) => (
           <ErrorBoundary key={index}>
-            <li key={index}><Link to={`/mutation/${account.id}`}>{account.holder.name}</Link></li>
+            <li><AccountLink account={account} /></li>
           </ErrorBoundary>
-        ))}
+        )
+      )}
       </ul>
       
     </div>

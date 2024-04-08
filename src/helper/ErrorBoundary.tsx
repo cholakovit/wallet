@@ -1,13 +1,4 @@
-import React, { Component, ErrorInfo, ReactNode } from 'react';
-
-interface Props {
-  children: ReactNode;
-}
-
-interface State {
-  hasError: boolean;
-  errorMessage: string;
-}
+import { Component, ErrorInfo } from 'react';
 
 class ErrorBoundary extends Component<Props, State> {
   constructor(props: Props) {
@@ -16,18 +7,15 @@ class ErrorBoundary extends Component<Props, State> {
   }
 
   static getDerivedStateFromError(error: Error): State {
-    // Update state so the next render will show the fallback UI.
     return { hasError: true, errorMessage: error.message };
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    // You can also log the error to an error reporting service
-    console.error("Uncaught error:", error, errorInfo);
+    console.error('Uncaught error:', error, errorInfo);
   }
 
   render() {
     if (this.state.hasError) {
-      // Make sure the JSX is correctly formatted
       return <h1>Something went wrong: {this.state.errorMessage}</h1>;
     }
 

@@ -37,3 +37,12 @@ type UseAccountFormProps = {
   walletId: string;
   selectedAccountId: string | undefined;
 }
+
+type Props = {
+  children: ReactNode;
+}
+
+type State = {
+  hasError: boolean;
+  errorMessage: string;
+}

@@ -132,7 +132,7 @@ export const useHandleCurrencyChange = (wallet: Wallet, mutation: UseMutationRes
   return { selectedCurrency, selectedAccountId, handleCurrencyChange, missingCurrency };
 };
 
-/* useAddTransactionToAccount with OPTIMISTI UPDATE */
+/* useAddTransactionToAccount with OPTIMISTIC UPDATE */
 
 export const useAddTransactionToAccount = () => {
   const queryClient = useQueryClient();
