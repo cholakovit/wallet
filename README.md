@@ -2,7 +2,7 @@
 
 # In the command prompt run
 
-npm run mock-api
+npm run server
 
 npm run start
 

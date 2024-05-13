@@ -8,6 +8,7 @@ type Wallet = {
   };
 };
 
+
 type Account = {
   id: string;
   currencyType: string;

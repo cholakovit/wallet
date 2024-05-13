@@ -1,4 +1,4 @@
-import { FC, Suspense } from 'react'
+import { FC } from 'react'
 import { useParams } from 'react-router-dom'
 import AccountMutation from '../../components/AccountMutation'
 import DisplayAccountBalance from '../../components/DisplayAccountBalance'
@@ -13,9 +13,7 @@ const AccountMut: FC = () => {
     <div>
       <ErrorBoundary>
         <AccountMutation walletId={params.id} />
-        <Suspense fallback={<div>Loading...</div>}>
           <DisplayAccountBalance />
-        </Suspense>
       </ErrorBoundary>
     </div>
   )

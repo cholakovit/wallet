@@ -8,8 +8,6 @@ import './index.css';
 const DisplayHolderNames = () => {
   const { wallet, error, isLoading } = useGetWallet();
 
-
-
   return (
     <div className='holderNames'>
       <h1>Display holder names:</h1>
